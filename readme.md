@@ -3,8 +3,8 @@
 
 ## Release History
 
-*0.0.6
-    *Went back to using beaconManager because MonitoringV2Manager is difficult to test with.
+* 0.0.6
+    * Went back to using beaconManager because MonitoringV2Manager is difficult to test with.
 
 * 0.0.5
     * Nuked project, starting over again with the base app to test beacon functionalities.
