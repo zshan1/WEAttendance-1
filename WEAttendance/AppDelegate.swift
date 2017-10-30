@@ -10,10 +10,10 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ESTMonitoringV2ManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
     var window: UIWindow?
-    var monitoringManager: ESTMonitoringV2Manager!
+    let beaconManager = ESTBeaconManager()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -21,21 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTMonitoringV2ManagerDel
         
         ESTConfig.setupAppID("weattendance-2lq", andAppToken: "a65fb0eb6418d444bc866aa8b5d44e15")
 
-        self.monitoringManager = ESTMonitoringV2Manager(
-            desiredMeanTriggerDistance: 2.0, delegate: self)
+        self.beaconManager.delegate = self
+        self.beaconManager.requestAlwaysAuthorization()
         
-        self.monitoringManager.startMonitoring(forIdentifiers: [
-            "2fe9f9eab6f63a83403d83d5fdd5f338",
-            "600b8a212b5931dd7dc79b47566a032f"])
-        
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            print("notifications allowed? = \(granted)")
-        }
+        self.beaconManager.startMonitoring(for: CLBeaconRegion(
+            
+            proximityUUID: UUID(uuidString: "EFFE8F91-19B7-4AAF-8194-CFF630745BCF")!,
+            major: 62703, minor: 48774, identifier: "2fe9f9eab6f63a83403d83d5fdd5f338"))
+  
 
 
         return true
     }
+    
+    
     
     func showNotification(title: String, body: String) {
         let content = UNMutableNotificationContent()
@@ -52,37 +51,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTMonitoringV2ManagerDel
     
     
     
-    func monitoringManager(_ manager: ESTMonitoringV2Manager,
-                           didEnterDesiredRangeOfBeaconWithIdentifier identifier: String) {
-        print("didEnter proximity of beacon \(identifier)")
-        showNotification(title: "Hey!", body: "Looks like you're near a beacon.")
 
-    }
-    func monitoringManager(_ manager: ESTMonitoringV2Manager,
-                           didExitDesiredRangeOfBeaconWithIdentifier identifier: String) {
-        print("didExit proximity of beacon \(identifier)")
-        showNotification(title: "Hey!", body: "Looks like you're out of range of a beacon.")
+    func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
 
-    }
-    func monitoringManager(_ manager: ESTMonitoringV2Manager,
-                           didDetermineInitialState state: ESTMonitoringState,
-                           forBeaconWithIdentifier identifier: String) {
-        // state codes: 0 = unknown, 1 = inside, 2 = outside
-        print("didDetermineInitialState '\(state)' for beacon \(identifier)")
+        showNotification(title: "Hello!", body: "You entered the range of a beacon!")
+    
     }
     
-    
-    func monitoringManagerDidStart(_ manager: ESTMonitoringV2Manager) {
-        print("monitoringManagerDidStart")
+
+    func beaconManager(_ manager: Any, didExit region: CLBeaconRegion) {
+        
+        showNotification(title: "GoodBye!", body: "You left the range of a beacon!")
+        
+        
     }
-    func monitoringManager(_ manager: ESTMonitoringV2Manager,
-                           didFailWithError error: Error) {
-        print("monitoringManager didFailWithError: \(error.localizedDescription)")
-    }
-    
-    
-    
-    
     
     
     
