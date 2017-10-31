@@ -1,4 +1,4 @@
-# iAttendance
+# WeAttendance
 > Attendance app using estimote ibeacons for the UVM Wellness Environment
 
 ## Release History
