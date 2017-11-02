@@ -24,12 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
         
+        
         self.beaconManager.startMonitoring(for: CLBeaconRegion(
-            
-            proximityUUID: UUID(uuidString: "EFFE8F91-19B7-4AAF-8194-CFF630745BCF")!,
-            major: 62703, minor: 48774, identifier: "2fe9f9eab6f63a83403d83d5fdd5f338"))
-  
-
+            proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
+            identifier: "0f61097c46e1d1b6c5cfaa35cb89c20d"))
 
         return true
     }
@@ -53,17 +51,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     
 
     func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
-
+        print("enter")
         showNotification(title: "Hello!", body: "You entered the range of a beacon!")
     
     }
     
 
-    func beaconManager(_ manager: Any, didExit region: CLBeaconRegion) {
-        
+    func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
+        print("exit")
         showNotification(title: "GoodBye!", body: "You left the range of a beacon!")
-        
-        
     }
     
     
