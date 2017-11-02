@@ -18,7 +18,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         
+        let storyboard = UIStoryboard(name:"Main",bundle:nil)
+        
+        var vc: UIViewController
+        
+        
+        
+        if(UserDefaults.standard.value(forKey: "NetID") as? String) == nil{
+            
+            vc = storyboard.instantiateViewController(withIdentifier: "LoginID")
+            
+            
+            
+        }else{
+            
+            vc = storyboard.instantiateInitialViewController()!
+            
+        }
+        
+        self.window?.rootViewController = vc
+        
+        self.window?.makeKeyAndVisible()
         ESTConfig.setupAppID("weattendance-2lq", andAppToken: "a65fb0eb6418d444bc866aa8b5d44e15")
 
         self.beaconManager.delegate = self
