@@ -15,6 +15,7 @@
 		186AD59B1FAA2667008487D0 /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AD59A1FAA2667008487D0 /* AboutUs.swift */; };
 		187760121FAAC26D0015DB1C /* DisplayAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187760111FAAC26D0015DB1C /* DisplayAttendance.swift */; };
 		18F9A3231FB3954A008F672C /* Pods_WEAttendance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F9A3241FB3954A008F672C /* Pods_WEAttendance.framework */; };
+		18F9A3261FB39862008F672C /* MonitorRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9A3251FB39862008F672C /* MonitorRegion.swift */; };
 		638D44481FA29EC5001BB1B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638D44471FA29EC5001BB1B8 /* AppDelegate.swift */; };
 		638D444A1FA29EC6001BB1B8 /* LoginID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638D44491FA29EC6001BB1B8 /* LoginID.swift */; };
 		638D444D1FA29EC6001BB1B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638D444B1FA29EC6001BB1B8 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		186AD59A1FAA2667008487D0 /* AboutUs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
 		187760111FAAC26D0015DB1C /* DisplayAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAttendance.swift; sourceTree = "<group>"; };
 		18F9A3241FB3954A008F672C /* Pods_WEAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WEAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18F9A3251FB39862008F672C /* MonitorRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorRegion.swift; sourceTree = "<group>"; };
 		630512961FA29FA9000593AC /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		638D44441FA29EC5001BB1B8 /* WEAttendance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WEAttendance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		638D44471FA29EC5001BB1B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				638D44471FA29EC5001BB1B8 /* AppDelegate.swift */,
 				638D44491FA29EC6001BB1B8 /* LoginID.swift */,
 				638D444B1FA29EC6001BB1B8 /* Main.storyboard */,
+				18F9A3251FB39862008F672C /* MonitorRegion.swift */,
 				187760111FAAC26D0015DB1C /* DisplayAttendance.swift */,
 				186AD59A1FAA2667008487D0 /* AboutUs.swift */,
 				638D444E1FA29EC6001BB1B8 /* Assets.xcassets */,
@@ -250,6 +253,7 @@
 				186AD59B1FAA2667008487D0 /* AboutUs.swift in Sources */,
 				186AD5961FAA25F1008487D0 /* Menu.swift in Sources */,
 				186AD5981FAA25F1008487D0 /* ClassStatus.swift in Sources */,
+				18F9A3261FB39862008F672C /* MonitorRegion.swift in Sources */,
 				186AD5951FAA25F1008487D0 /* CheckAttendance.swift in Sources */,
 				186AD5991FAA25F1008487D0 /* Tab.swift in Sources */,
 				187760121FAAC26D0015DB1C /* DisplayAttendance.swift in Sources */,
