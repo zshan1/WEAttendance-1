@@ -14,9 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
 
     var window: UIWindow?
     let beaconManager = ESTBeaconManager()
-
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // ask the user to allow notifications
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            print("notifications allowed? = \(granted)")
+        }
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -30,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
             
             vc = storyboard.instantiateViewController(withIdentifier: "LoginID")
             
-            
-            
         }else{
             
             vc = storyboard.instantiateInitialViewController()!
@@ -42,18 +46,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         
         self.window?.makeKeyAndVisible()
         ESTConfig.setupAppID("weattendance-2lq", andAppToken: "a65fb0eb6418d444bc866aa8b5d44e15")
-
+        
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
         
+        // set up the monitor regions
+        loadRegions()
         self.beaconManager.startMonitoring(for: CLBeaconRegion(
-            
-            proximityUUID: UUID(uuidString: "EFFE8F91-19B7-4AAF-8194-CFF630745BCF")!,
-            major: 62703, minor: 48774, identifier: "2fe9f9eab6f63a83403d83d5fdd5f338"))
-  
-
-
+            proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
+            major: 45268, identifier: ""))
+        
         return true
+    }
+    
+    
+    
+    // set given an array of monitoringRegion to UserDefaults where key is "monitorRegions"
+    func setRegion(regions: [MonitoringRegion]) {
+        let regionsData = NSKeyedArchiver.archivedData(withRootObject: regions)
+        UserDefaults.standard.set(regionsData, forKey: "monitorRegions")
+    }
+    
+    // print out current monitoring region
+    func loadRegions() {
+        guard let RegionsData = UserDefaults.standard.object(forKey: "monitorRegions") as? NSData else {
+            print("'monitorRegions' not found in UserDefaults")
+            return
+        }
+        
+        guard let regions = NSKeyedUnarchiver.unarchiveObject(with: RegionsData as Data) as? [MonitoringRegion] else {
+            print("Could not unarchive from RegionsData")
+            return
+        }
+        
+        for region in regions {
+            print("")
+            print("date: \(region.date)")
+        }
+    }
+    
+    // return current monitoring region. if the region is not set, return empty array
+    func getRegionsArray() -> Array<MonitoringRegion>{
+        var regions: [MonitoringRegion] = []
+        if(UserDefaults.standard.object(forKey: "monitorRegions") != nil){
+            let RegionsData = UserDefaults.standard.object(forKey: "monitorRegions") as? NSData
+            if(NSKeyedUnarchiver.unarchiveObject(with: RegionsData! as Data) != nil){
+                regions = (NSKeyedUnarchiver.unarchiveObject(with: RegionsData! as Data) as? [MonitoringRegion])!
+            }else{
+                let regionsData = NSKeyedArchiver.archivedData(withRootObject: regions)
+                UserDefaults.standard.set(regionsData, forKey: "monitorRegions")
+            }
+        }else{
+            let regionsData = NSKeyedArchiver.archivedData(withRootObject: regions)
+            UserDefaults.standard.set(regionsData, forKey: "monitorRegions")
+        }
+        return regions
     }
     
     
@@ -72,21 +119,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     
     
     
-    
-
     func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
-
+        print("enter")
         showNotification(title: "Hello!", body: "You entered the range of a beacon!")
-    
-    }
-    
-
-    func beaconManager(_ manager: Any, didExit region: CLBeaconRegion) {
         
+    }
+    func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
+        print("exit")
         showNotification(title: "GoodBye!", body: "You left the range of a beacon!")
-        
-        
     }
+    func beaconManager(_ manager: Any, didDetermineInitialState state: ESTMonitoringState,
+                       forBeaconWithIdentifier identifier: String) {
+        // state codes: 0 = unknown, 1 = inside, 2 = outside
+        print("didDetermineInitialState '\(state)' for beacon \(identifier)")
+    }
+    
     
     
     
