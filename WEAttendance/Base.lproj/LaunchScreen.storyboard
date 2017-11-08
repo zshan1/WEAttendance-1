@@ -17,26 +17,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="FAc-Un-8ic">
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundW" translatesAutoresizingMaskIntoConstraints="NO" id="FAc-Un-8ic">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="tintColor" red="0.40656987075684203" green="0.35954756210566896" blue="0.93048064720812185" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image-2" translatesAutoresizingMaskIntoConstraints="NO" id="ayn-1d-krC">
-                                <rect key="frame" x="62.5" y="218.5" width="250" height="250"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="SEB-aX-Y8G"/>
-                                    <constraint firstAttribute="height" constant="250" id="q0Z-hF-E51"/>
-                                </constraints>
+                                <rect key="frame" x="62" y="218" width="250" height="250"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="FAc-Un-8ic" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KZC-2i-6DL"/>
-                            <constraint firstItem="FAc-Un-8ic" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="NzV-av-Qza"/>
-                            <constraint firstItem="ayn-1d-krC" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Qxh-ce-HGq"/>
-                            <constraint firstItem="FAc-Un-8ic" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="hJz-J7-2xS"/>
-                            <constraint firstItem="FAc-Un-8ic" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lkk-29-VSX"/>
-                            <constraint firstItem="ayn-1d-krC" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="xJg-ew-GgD"/>
+                            <constraint firstItem="ayn-1d-krC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62.5" id="EYx-mC-ecV"/>
+                            <constraint firstItem="FAc-Un-8ic" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="RHP-AL-QCt"/>
+                            <constraint firstItem="ayn-1d-krC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="198.5" id="SMW-7y-ZfN"/>
+                            <constraint firstItem="FAc-Un-8ic" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XqH-v9-6Ev"/>
+                            <constraint firstItem="FAc-Un-8ic" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Y8b-ZC-WzM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ayn-1d-krC" secondAttribute="bottom" constant="198.5" id="a6L-WE-pg7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ayn-1d-krC" secondAttribute="trailing" constant="62.5" id="nqr-Pl-YTT"/>
+                            <constraint firstItem="FAc-Un-8ic" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="rxy-Uy-nCo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -47,7 +45,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background" width="1000" height="666"/>
+        <image name="BackgroundW" width="816" height="544"/>
         <image name="Image-2" width="647" height="646"/>
     </resources>
 </document>
